@@ -1,0 +1,36 @@
+name: ShellCheck
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  shellcheck:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Bash syntax check
+        run: |
+          bash -n scripts/setup-ubuntu.sh
+          bash -n scripts/rollback.sh
+          bash -n tests/smoke-test.sh
+          bash -n tests/help-audit-test.sh
+
+      - name: ShellCheck
+        run: shellcheck scripts/setup-ubuntu.sh scripts/rollback.sh tests/smoke-test.sh tests/help-audit-test.sh
+
+      - name: Smoke test
+        run: bash tests/smoke-test.sh
+
+      - name: Help and audit test
+        run: bash tests/help-audit-test.sh

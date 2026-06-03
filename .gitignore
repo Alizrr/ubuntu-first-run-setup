@@ -1,0 +1,17 @@
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+.DS_Store
+Thumbs.db
+
+.env
+.env.*
+
+.vscode/
+.idea/
+
+ubuntu-first-run-setup.dry-run.log
