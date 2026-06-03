@@ -12,6 +12,13 @@ This is not a replacement for Ansible, cloud-init, Terraform, Puppet, Chef, Salt
 
 ---
 
+## Preview
+
+A quick look at the interactive setup flow:
+
+![Ubuntu First Run Setup terminal preview](assets/ubuntu-first-run-setup-preview.png)
+
+
 ## Features
 
 * Interactive setup profiles:
